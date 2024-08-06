@@ -18,4 +18,4 @@
   url = ../../commaai/teleoprtc
 [submodule "tinygrad"]
   path = tinygrad_repo
-  url = https://github.com/geohot/tinygrad.git
+  url = http://opdiy.cn:9999/tinygrad/tinygrad.git
