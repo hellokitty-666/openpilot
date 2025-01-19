@@ -15,6 +15,7 @@
 #include "selfdrive/ui/qt/widgets/prime.h"
 #include "selfdrive/ui/qt/widgets/scrollview.h"
 #include "selfdrive/ui/qt/offroad/developer_panel.h"
+#include "selfdrive/ui/qt/offroad/car_fingerprint_selector.h"  // 新增的头文件
 
 TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
   // param, title, desc, icon
@@ -359,6 +360,13 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
   sidebar_widget = new QWidget;
   QVBoxLayout *sidebar_layout = new QVBoxLayout(sidebar_widget);
   panel_widget = new QStackedWidget();
+
+  QPushButton *fingerprint_btn = new QPushButton("强制车型指纹选择");
+  main_layout->addWidget(fingerprint_btn);
+  QObject::connect(fingerprint_btn, &QPushButton::clicked, [=]() {
+    CarFingerprintSelector *selector = new CarFingerprintSelector(this);
+    selector->show();
+  });
 
   // close button
   QPushButton *close_btn = new QPushButton(tr("×"));
